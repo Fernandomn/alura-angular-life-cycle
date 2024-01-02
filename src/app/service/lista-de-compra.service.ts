@@ -37,6 +37,25 @@ export class ListaDeCompraService {
   addItemToList(itemName: string): void {
     const item = this.createItem(itemName);
     this.listaDeCompra.push(item);
+    this.updateLocalStorage();
+  }
+
+  editItem(oldItem: Item, newItemName: string): void {
+    const editedItem: Item = { ...oldItem, nome: newItemName };
+    this.listaDeCompra.splice(
+      this.listaDeCompra.indexOf(oldItem),
+      1,
+      editedItem
+    );
+    this.updateLocalStorage();
+  }
+
+  private getLargerId(): number {
+    const ids = this.listaDeCompra.map((compra) => compra.id || 0);
+    const largerIdObj = this.listaDeCompra.find(
+      (item) => item.id === Math.max(...ids)
+    );
+    return (largerIdObj?.id || 0) + 1;
   }
 
   private createItem(itemName: string): Item {
@@ -51,20 +70,7 @@ export class ListaDeCompraService {
     return item;
   }
 
-  editItem(oldItem: Item, newItemName: string): void {
-    const editedItem: Item = { ...oldItem, nome: newItemName };
-    this.listaDeCompra.splice(
-      this.listaDeCompra.indexOf(oldItem),
-      1,
-      editedItem
-    );
-  }
-
-  private getLargerId(): number {
-    const ids = this.listaDeCompra.map((compra) => compra.id || 0);
-    const largerIdObj = this.listaDeCompra.find(
-      (item) => item.id === Math.max(...ids)
-    );
-    return (largerIdObj?.id || 0) + 1;
+  private updateLocalStorage(): void {
+    localStorage.setItem('itens', JSON.stringify(this.listaDeCompra));
   }
 }
