@@ -27,7 +27,7 @@ export class ListaDeCompraService {
   ];
 
   constructor() {
-    console.log('Instanciando dependências necessárias para o serviço.');
+    this.listaDeCompra = JSON.parse(localStorage.getItem('itens') || '[]');
   }
 
   getListaDeCompra() {
