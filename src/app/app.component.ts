@@ -11,11 +11,15 @@ export class AppComponent implements OnInit {
   title = 'app-lista-de-compras';
   shoppingList!: Array<Item>;
 
+  itemToEdit!: Item;
+
   constructor(private listaService: ListaDeCompraService) {}
 
   ngOnInit(): void {
     this.shoppingList = this.listaService.getListaDeCompra();
+  }
 
-    console.log('this.shoppingList', this.shoppingList);
+  editItem(item: Item) {
+    this.itemToEdit = item;
   }
 }
