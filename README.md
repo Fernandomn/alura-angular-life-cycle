@@ -1,3 +1,6 @@
+# IMPORTANT
+This project is a study following the course [Angular: ciclo de vida](https://cursos.alura.com.br/course/angular-ciclo-vida).
+
 # LifeCycle
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
