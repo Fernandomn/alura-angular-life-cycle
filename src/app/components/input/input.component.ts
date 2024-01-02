@@ -16,6 +16,8 @@ import { ListaDeCompraService } from 'src/app/service/lista-de-compra.service';
 export class InputComponent implements OnInit, OnChanges {
   @Input() itemToEdit!: Item;
 
+  editing: boolean = false;
+
   itemValue!: string;
   constructor(private listaService: ListaDeCompraService) {}
 
@@ -23,8 +25,15 @@ export class InputComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!changes['itemToEdit'].firstChange) {
+      this.editing = true;
       this.itemValue = this.itemToEdit?.nome;
     }
+  }
+
+  editItem(): void {
+    this.listaService.editItem(this.itemToEdit, this.itemValue);
+    this.editing = false;
+    this.cleanField();
   }
 
   addItem(): void {

@@ -51,6 +51,15 @@ export class ListaDeCompraService {
     return item;
   }
 
+  editItem(oldItem: Item, newItemName: string): void {
+    const editedItem: Item = { ...oldItem, nome: newItemName };
+    this.listaDeCompra.splice(
+      this.listaDeCompra.indexOf(oldItem),
+      1,
+      editedItem
+    );
+  }
+
   private getLargerId(): number {
     const ids = this.listaDeCompra.map((compra) => compra.id || 0);
     const largerIdObj = this.listaDeCompra.find(
