@@ -31,4 +31,8 @@ export class AppComponent implements OnInit, DoCheck {
     const index = this.shoppingList.findIndex((item) => item.id === itemId);
     this.shoppingList.splice(index, 1);
   }
+
+  cleanList() {
+    this.shoppingList = [];
+  }
 }

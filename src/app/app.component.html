@@ -2,7 +2,12 @@
   <app-input [itemToEdit]="itemToEdit"></app-input>
   <div class="container">
     <div class="lista">
-      <h4 class="title-list">Lista de Compras</h4>
+      <div class="header-lista">
+        <h4 class="title-list">Lista de Compras</h4>
+        <button class="btn-header" (click)="cleanList()">
+          <small>Limpar lista</small>
+        </button>
+      </div>
       <div class="" *ngIf="shoppingList.length > 0; else haveNoItems">
         <div class="" *ngFor="let item of shoppingList">
           <app-item
