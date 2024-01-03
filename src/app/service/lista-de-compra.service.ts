@@ -37,7 +37,7 @@ export class ListaDeCompraService {
   addItemToList(itemName: string): void {
     const item = this.createItem(itemName);
     this.listaDeCompra.push(item);
-    this.updateLocalStorage();
+    // this.updateLocalStorage();
   }
 
   editItem(oldItem: Item, newItemName: string): void {
@@ -47,7 +47,11 @@ export class ListaDeCompraService {
       1,
       editedItem
     );
-    this.updateLocalStorage();
+    // this.updateLocalStorage();
+  }
+
+  updateLocalStorage(): void {
+    localStorage.setItem('itens', JSON.stringify(this.listaDeCompra));
   }
 
   private getLargerId(): number {
@@ -68,9 +72,5 @@ export class ListaDeCompraService {
       comprado: false,
     };
     return item;
-  }
-
-  private updateLocalStorage(): void {
-    localStorage.setItem('itens', JSON.stringify(this.listaDeCompra));
   }
 }
