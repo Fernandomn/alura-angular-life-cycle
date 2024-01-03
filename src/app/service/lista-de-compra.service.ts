@@ -1,5 +1,5 @@
-import { Item } from 'src/app/interfaces/iItem';
 import { Injectable } from '@angular/core';
+import { Item } from 'src/app/interfaces/iItem';
 
 @Injectable({
   providedIn: 'root',
@@ -37,7 +37,6 @@ export class ListaDeCompraService {
   addItemToList(itemName: string): void {
     const item = this.createItem(itemName);
     this.listaDeCompra.push(item);
-    // this.updateLocalStorage();
   }
 
   editItem(oldItem: Item, newItemName: string): void {
@@ -47,7 +46,6 @@ export class ListaDeCompraService {
       1,
       editedItem
     );
-    // this.updateLocalStorage();
   }
 
   updateLocalStorage(): void {
